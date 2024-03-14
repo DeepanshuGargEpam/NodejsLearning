@@ -13,12 +13,8 @@ app.use(function(req,res,next){
         next();
     })
 })
-
 function authorize(role){
     return function(req,res,next){
-        let userresult=users.find(user=>{
-            user.userName==='admin'
-        })
         const user=req.user;
         if(!user||user.role!==role){
             return res.status(403).send('Unauthorized');
